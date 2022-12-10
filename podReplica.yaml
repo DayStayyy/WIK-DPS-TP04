@@ -17,6 +17,19 @@ spec:
         image: registry.cluster.wik.cloud/public/echo
         ports:
         - containerPort: 8080
-    
+
+# SERVICE
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: replica-service
+spec:
+  selector:
+    app: echo
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080    
 
     
