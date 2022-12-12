@@ -4,29 +4,13 @@ metadata:
   name: echo-ingress
 spec:
   rules:
-  - host: echo.wik
+  - host: echo.wik.cloud
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: ingress-service
+            name: replica-service
             port:
               number: 80
-
-
-
-# SERVICE
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: ingress-service
-spec:
-  selector:
-    app: echo
-  ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 8080    
